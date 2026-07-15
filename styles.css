@@ -2365,6 +2365,7 @@ span.orange-text {
   color: #fff;
   display: grid;
   place-items: center;
+  border-radius: 50%;
   font-family: var(--font-heading);
   font-size: 12px;
   font-weight: 900;
