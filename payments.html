@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Payment details for SP Projects & Togetherness. Bank transfer information for project payments.">
+  <title>Payment Details | SP Projects & Togetherness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Payments Page Specific ── */
+    .payments-hero {
+      padding-top: 140px;
+      padding-bottom: 80px;
+    }
+
+    .payments-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    /* The main banking card */
+    .bank-card {
+      background-color: var(--bg-soft);
+      border: 1px solid var(--border);
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bank-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .bank-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bank-icon {
+      width: 52px;
+      height: 52px;
+      background-color: var(--accent-soft);
+      border: 1px solid var(--accent);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .bank-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent);
+      fill: none;
+    }
+
+    .bank-card-header-text h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+
+    .bank-card-header-text span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .bank-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .bank-detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .bank-detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .bank-detail-label {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .bank-detail-value {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      text-align: right;
+    }
+
+    .bank-detail-value.accent {
+      color: var(--accent);
+      font-size: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Copy button */
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 28px;
+      padding: 10px 20px;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .copy-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    .copy-btn.copied {
+      border-color: #22c55e;
+      color: #22c55e;
+    }
+
+    /* Info / notice panel */
+    .info-panel {
+      background-color: var(--bg-soft);
+      border: 1px solid var(--border);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .notice-block {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .notice-icon {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .notice-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--text-muted);
+      fill: none;
+    }
+
+    .notice-text h3 {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .notice-text p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: var(--border);
+    }
+
+    /* CTA strip */
+    .payments-cta {
+      margin-top: 2px;
+      background-color: var(--accent);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .payments-cta p {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .payments-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(0,0,0,0.25);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 14px 28px;
+      border: 1px solid rgba(255,255,255,0.3);
+      white-space: nowrap;
+      transition: background-color 0.2s ease;
+    }
+
+    .payments-cta a:hover {
+      background-color: rgba(0,0,0,0.45);
+    }
+
+    @media (max-width: 900px) {
+      .payments-grid {
+        grid-template-columns: 1fr;
+      }
+      .payments-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .bank-card,
+      .info-panel {
+        padding: 28px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-container">
+        <div class="logo-mark">
+          <span class="logo-s">S</span><span class="logo-p">P</span>
+        </div>
+        <div class="logo-divider"></div>
+        <div class="logo-text">
+          <span class="logo-line1">PROJECTS &</span>
+          <span class="logo-line2">TOGETHERNESS</span>
+        </div>
+      </a>
+      <nav class="main-nav" aria-label="Main menu">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">About</a>
+        <a href="portfolio.html">Projects</a>
+        <a href="payments.html" class="active">Payments</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="contact.html" class="btn-contact-nav">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Contact Us
+        </a>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">☰</button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="portfolio.html">Projects</a>
+      <a href="payments.html">Payments</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="button button-block">Contact Us</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section payments-hero">
+      <div class="container">
+        <span class="section-label">Banking Details</span>
+        <h1>Payment <span class="orange-text">Information</span></h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 560px; line-height: 1.75; margin-top: 12px;">
+          Use the banking details below to make secure EFT payments directly into our business account. Please use your name or project reference as the payment reference.
+        </p>
+
+        <div class="payments-grid">
+
+          <!-- Banking Details Card -->
+          <div class="bank-card">
+            <div class="bank-card-header">
+              <div class="bank-icon">
+                <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg>
+              </div>
+              <div class="bank-card-header-text">
+                <h2>EFT Bank Transfer</h2>
+                <span>South Africa · ZAR</span>
+              </div>
+            </div>
+
+            <div class="bank-details-list">
+              <div class="bank-detail-row">
+                <span class="bank-detail-label">Account Name</span>
+                <span class="bank-detail-value">SP Maphumulo</span>
+              </div>
+              <div class="bank-detail-row">
+                <span class="bank-detail-label">Bank</span>
+                <span class="bank-detail-value">Nedbank</span>
+              </div>
+              <div class="bank-detail-row">
+                <span class="bank-detail-label">Account Number</span>
+                <span class="bank-detail-value accent" id="acc-number">1307207413</span>
+              </div>
+              <div class="bank-detail-row">
+                <span class="bank-detail-label">Account Type</span>
+                <span class="bank-detail-value">Current Account</span>
+              </div>
+              <div class="bank-detail-row">
+                <span class="bank-detail-label">Reference</span>
+                <span class="bank-detail-value" style="color: var(--text-muted); font-size:13px;">Your Name / Project Ref</span>
+              </div>
+            </div>
+
+            <button class="copy-btn" id="copy-acc-btn" onclick="copyAccountNumber()">
+              <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Account Number
+            </button>
+          </div>
+
+          <!-- Info Panel -->
+          <div class="info-panel">
+            <div class="notice-block">
+              <div class="notice-icon">
+                <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+              </div>
+              <div class="notice-text">
+                <h3>Payment Reference</h3>
+                <p>Always include your <strong style="color:var(--text)">full name</strong> or <strong style="color:var(--text)">project reference number</strong> when making a payment so we can allocate it correctly.</p>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="notice-block">
+              <div class="notice-icon">
+                <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+              </div>
+              <div class="notice-text">
+                <h3>Secure Transfer</h3>
+                <p>All payments should be made via EFT directly to the Nedbank account above. We do <strong style="color:var(--text)">not accept cash</strong> deposits.</p>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="notice-block">
+              <div class="notice-icon">
+                <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+              </div>
+              <div class="notice-text">
+                <h3>Proof of Payment</h3>
+                <p>After making your payment, please email your <strong style="color:var(--text)">proof of payment (POP)</strong> to <a href="mailto:petrosmaphumulos@gmail.com" style="color:var(--accent)">petrosmaphumulos@gmail.com</a> for confirmation.</p>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="notice-block">
+              <div class="notice-icon">
+                <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+              </div>
+              <div class="notice-text">
+                <h3>Questions?</h3>
+                <p>Call us on <a href="tel:+27760671258" style="color:var(--accent)">076 067 1258</a> if you have any payment queries.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Strip -->
+        <div class="payments-cta">
+          <p>Once your payment is confirmed, our team will be in touch to proceed with your project. Thank you for choosing SP Projects & Togetherness.</p>
+          <a href="contact.html">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Contact Us
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-logo-desc">
+        <a href="index.html" class="brand-container">
+          <div class="logo-mark">
+            <span class="logo-s">S</span><span class="logo-p">P</span>
+          </div>
+          <div class="logo-divider"></div>
+          <div class="logo-text">
+            <span class="logo-line1">PROJECTS &</span>
+            <span class="logo-line2">TOGETHERNESS</span>
+          </div>
+        </a>
+        <p>Premium construction and project management services in KwaZulu-Natal. Delivering excellence, safety, and reliability on time, every time.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html#services">Our Services</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="portfolio.html">Completed Projects</a></li>
+          <li><a href="payments.html">Payments</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <div class="footer-contact-list">
+          <p><span>Phone & WhatsApp</span>+27 76 067 1258</p>
+          <p><span>Email</span>petrosmaphumulos@gmail.com</p>
+          <p><span>Address</span>1364 Alpuba Road, Avoca Hills, Durban, 4015</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Connect With Us</h3>
+        <div class="footer-social-links">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/spprojects.za/?utm_source=ig_web_button_share_sheet" target="_blank" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="footer-copy">© 2026 SP Projects & Togetherness. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/27760671258" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.484 2.016 14.032.99 11.533.99c-5.445 0-9.873 4.372-9.877 9.802-.001 1.768.482 3.49 1.396 5.039L2.094 21.84l6.195-1.616-.642-.37z"/>
+      <path d="M15.43 12.986c-.276-.139-1.631-.805-1.884-.897-.252-.092-.436-.139-.62.139-.184.277-.712.897-.872 1.082-.16.184-.32.207-.597.069-.276-.139-1.168-.43-2.223-1.373-.821-.733-1.376-1.639-1.537-1.916-.16-.277-.017-.427.121-.565.125-.124.276-.323.414-.485.138-.162.184-.277.276-.462.092-.185.046-.347-.023-.485-.069-.139-.62-1.496-.85-2.05-.223-.538-.448-.465-.62-.474-.162-.008-.347-.009-.53-.009-.184 0-.482.069-.735.347-.252.277-.964.942-.964 2.298 0 1.357.987 2.668 1.125 2.853.138.184 1.943 2.966 4.707 4.159.658.284 1.171.454 1.571.581.662.21 1.264.18 1.74.109.531-.08 1.631-.667 1.861-1.307.23-.639.23-1.187.16-1.302-.069-.115-.253-.184-.529-.323z"/>
+    </svg>
+  </a>
+
+  <script src="scripts.js"></script>
+  <script>
+    function copyAccountNumber() {
+      const accNum = document.getElementById('acc-number').textContent;
+      navigator.clipboard.writeText(accNum).then(() => {
+        const btn = document.getElementById('copy-acc-btn');
+        btn.classList.add('copied');
+        btn.innerHTML = `<svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = `<svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Account Number`;
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+</html>

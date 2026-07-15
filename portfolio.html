@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore SP Projects & Togetherness portfolio. Premier residential, commercial, industrial and high-end renovation projects across KwaZulu-Natal.">
+  <title>Portfolio | SP Projects & Togetherness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-container">
+        <div class="logo-mark">
+          <span class="logo-s">S</span><span class="logo-p">P</span>
+        </div>
+        <div class="logo-divider"></div>
+        <div class="logo-text">
+          <span class="logo-line1">PROJECTS &</span>
+          <span class="logo-line2">TOGETHERNESS</span>
+        </div>
+      </a>
+      <nav class="main-nav" aria-label="Main menu">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">About</a>
+        <a href="portfolio.html" class="active">Projects</a>
+        <a href="payments.html">Payments</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="contact.html" class="btn-contact-nav">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Contact Us
+        </a>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">☰</button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="portfolio.html">Projects</a>
+      <a href="payments.html">Payments</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="button button-block">Get a Free Quote</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero" style="background-image: url('assets/hero-portfolio.jpeg');">
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-inner container">
+        <span class="section-label">Our Work</span>
+        <h1>Projects Built on Quality & Trust</h1>
+        <p>A selection of executed projects delivered with premium quality, technical precision, and sophisticated finishes across Durban and KwaZulu-Natal.</p>
+      </div>
+    </section>
+
+    <!-- Projects Catalog -->
+    <section class="section portfolio-section">
+      <div class="container">
+        
+        <!-- Filter Buttons -->
+        <div class="filter-container">
+          <button class="filter-button active" data-filter="all">All Projects</button>
+        </div>
+
+        <div class="projects-board" id="portfolio-grid">
+          <!-- Project 1 -->
+          <div class="project-tile project-card" data-category="residential" onclick="window.location.href='project.html?id=1'">
+            <img src="assets/portfolio-1.jpeg" alt="Vila Nova Residence" loading="lazy">
+            <div class="project-tile-overlay"></div>
+          </div>
+          
+          <!-- Project 2 -->
+          <div class="project-tile project-card" data-category="commercial" onclick="window.location.href='project.html?id=2'">
+            <img src="assets/portfolio-2.jpeg" alt="Modern Corporate Office" loading="lazy">
+            <div class="project-tile-overlay"></div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-tile project-card" data-category="industrial" onclick="window.location.href='project.html?id=3'">
+            <img src="assets/portfolio-3.jpeg" alt="KZN Industrial Hub" loading="lazy">
+            <div class="project-tile-overlay"></div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-tile project-card" data-category="renovation" onclick="window.location.href='project.html?id=4'">
+            <img src="assets/portfolio-4.jpeg" alt="High-End Structural Remodel" loading="lazy">
+            <div class="project-tile-overlay"></div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="project-tile project-card" data-category="residential" onclick="window.location.href='project.html?id=5'">
+            <img src="assets/portfolio-5.jpeg" alt="Contemporary Durban Villa" loading="lazy">
+            <div class="project-tile-overlay"></div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="project-tile project-card" data-category="renovation" onclick="window.location.href='project.html?id=6'">
+            <img src="assets/project-card-4.jpeg" alt="Premium Interior Finish" loading="lazy">
+            <div class="project-tile-overlay"></div>
+          </div>
+
+          <!-- Project 7 -->
+          <div class="project-tile project-card gallery-item" data-category="residential" data-src="assets/project-card-5.jpeg" style="cursor: pointer;">
+            <img src="assets/project-card-5.jpeg" alt="Completed Project 5" loading="lazy">
+            <div class="project-tile-overlay"></div>
+          </div>
+
+          <!-- Project 9 -->
+          <div class="project-tile project-card gallery-item" data-category="industrial" data-src="assets/project-card-7.jpeg" style="cursor: pointer;">
+            <img src="assets/project-card-7.jpeg" alt="Completed Project 7" loading="lazy">
+            <div class="project-tile-overlay"></div>
+          </div>
+
+          <!-- Project 12 -->
+          <div class="project-tile project-card gallery-item" data-category="commercial" data-src="assets/project-card-10.jpeg" style="cursor: pointer;">
+            <img src="assets/project-card-10.jpeg" alt="Completed Project 10" loading="lazy">
+            <div class="project-tile-overlay"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-logo-desc">
+        <a href="index.html" class="brand-container">
+          <div class="logo-mark">
+            <span class="logo-s">S</span><span class="logo-p">P</span>
+          </div>
+          <div class="logo-divider"></div>
+          <div class="logo-text">
+            <span class="logo-line1">PROJECTS &</span>
+            <span class="logo-line2">TOGETHERNESS</span>
+          </div>
+        </a>
+        <p>Premium construction and project management services in KwaZulu-Natal. Delivering excellence, safety, and reliability on time, every time.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html#services">Our Services</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="portfolio.html">Completed Projects</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <div class="footer-contact-list">
+          <p><span>Phone & WhatsApp</span>+27 76 067 1258</p>
+          <p><span>Email</span>petrosmaphumulos@gmail.com</p>
+          <p><span>Address</span>1364 Alpuba Road, Avoca Hills, Durban, 4015</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Connect With Us</h3>
+        <div class="footer-social-links">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/spprojects.za/?utm_source=ig_web_button_share_sheet" target="_blank" class="footer-social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div class="footer-copy">© 2026 SP Projects & Togetherness. All Rights Reserved.</div>
+      <div>CIDB Registered Contractor • Durban, KZN</div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/27760671258" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.484 2.016 14.032.99 11.533.99c-5.445 0-9.873 4.372-9.877 9.802-.001 1.768.482 3.49 1.396 5.039L2.094 21.84l6.195-1.616-.642-.37z"/>
+      <path d="M15.43 12.986c-.276-.139-1.631-.805-1.884-.897-.252-.092-.436-.139-.62.139-.184.277-.712.897-.872 1.082-.16.184-.32.207-.597.069-.276-.139-1.168-.43-2.223-1.373-.821-.733-1.376-1.639-1.537-1.916-.16-.277-.017-.427.121-.565.125-.124.276-.323.414-.485.138-.162.184-.277.276-.462.092-.185.046-.347-.023-.485-.069-.139-.62-1.496-.85-2.05-.223-.538-.448-.465-.62-.474-.162-.008-.347-.009-.53-.009-.184 0-.482.069-.735.347-.252.277-.964.942-.964 2.298 0 1.357.987 2.668 1.125 2.853.138.184 1.943 2.966 4.707 4.159.658.284 1.171.454 1.571.581.662.21 1.264.18 1.74.109.531-.08 1.631-.667 1.861-1.307.23-.639.23-1.187.16-1.302-.069-.115-.253-.184-.529-.323z"/>
+    </svg>
+  </a>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
